@@ -2,11 +2,11 @@
 
 There are two branches.
 
-**`local`** is the first part of the app where the Todos are stored in a SvelteKit store.
+**<a href="https://github.com/robots4life/val/tree/local">`local`</a>** is the first part of the app where the Todos are stored in a SvelteKit store.
 
 https://www.youtube.com/watch?v=YipaPr4Aex8
 
-**`supabase`** is the second part of the app where everything runs on Supabase including User Authentication via Magic Link.
+**<a href="https://github.com/robots4life/val/tree/supabase">`supabase`</a>** is the second part of the app where everything runs on Supabase including User Authentication via Magic Link.
 
 Both apps are styled with Tailwind CSS.
 
