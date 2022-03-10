@@ -1,4 +1,13 @@
-<form class="text-2xl text-center text-sky-400 py-4">
+<script>
+	let todo = '';
+
+	const handleSubmit = (event) => {
+		console.log(event);
+		console.log('submitting');
+	};
+</script>
+
+<form class="text-2xl text-center text-sky-400 py-4" on:submit|preventDefault="{handleSubmit}">
 	<div class="flex flex-col">
 		<label for="todo"></label>
 		<input
@@ -6,6 +15,7 @@
 			type="text"
 			name="todo"
 			placeholder="Buy Ice Cream"
+			bind:value="{todo}"
 		/>
 	</div>
 	<button type="submit" class="text-white rounded bg-blue-500 hover:bg-blue-600 py-4 px-6 my-6"
