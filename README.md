@@ -33,3 +33,58 @@ val@0.0.1 /shared/httpd/val
 </br>
 
 ## local
+
+### 1.
+
+Install Tailwind CSS with SvelteKit
+
+https://tailwindcss.com/docs/guides/sveltekit
+
+`npm install -D tailwindcss postcss autoprefixer`
+
+`npx tailwindcss init tailwind.config.cjs -p`
+
+returns
+
+```shell
+Created Tailwind CSS config file: tailwind.config.cjs
+Created PostCSS config file: postcss.config.js
+```
+
+`mv postcss.config.js postcss.config.cjs`
+
+</br>
+
+`tailwind.config.cjs`
+
+```js
+module.exports = {
+	content: ['./src/**/*.{html,js,svelte,ts}'],
+	theme: {
+		extend: {}
+	},
+	plugins: []
+};
+```
+
+</br>
+
+`src/app.css`
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+</br>
+
+`src/routes/index.svelte`
+
+```html
+<h1 class="text-3xl font-bold underline">Val - Full Stack SvelteKit Todo App</h1>
+```
+
+Done.
+
+### 2.
