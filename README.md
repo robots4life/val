@@ -122,3 +122,36 @@ Build a basic form and style with Tailwind CSS.
 	</button>
 </form>
 ```
+
+### 4.
+
+Create a store and some helper functions for the Todos.
+
+`src/stores/todoStore.js`
+
+```js
+import { writable } from 'svelte/store';
+
+// create an empty array of todos in the store that can be written to
+export const todos = writable([]);
+```
+
+</br>
+
+Create the addTodo function.
+
+```js
+export const addTodo = (text) => {
+	//
+	// update the todos store with the update method
+	todos.update((currentValue) => {
+		//
+		// update the array and re-assign it to todos
+		// spread out the currentValue and add in the new value
+		const newTodos = [...currentValue, { text, completed: false, id: Date.now() }];
+
+		// return the newly created array
+		return newTodos;
+	});
+};
+```
