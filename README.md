@@ -28,8 +28,3 @@ val@0.0.1 /shared/httpd/val
 ├── prettier@2.5.1
 └── svelte@3.46.4
 ```
-
-</br>
-</br>
-
-## local
