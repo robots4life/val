@@ -88,3 +88,16 @@ module.exports = {
 Done.
 
 ### 2.
+
+Apply global styles to the `body` element.
+
+`__layout.svelte`
+
+```html
+<style lang="postcss">
+	:global(body) {
+		@apply bg-sky-900;
+		@apply text-sky-100;
+	}
+</style>
+```
