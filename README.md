@@ -36,7 +36,7 @@ val@0.0.1 /shared/httpd/val
 
 ### 1.
 
-Install Tailwind CSS with SvelteKit
+Install Tailwind CSS with SvelteKit.
 
 https://tailwindcss.com/docs/guides/sveltekit
 
@@ -84,8 +84,6 @@ module.exports = {
 ```html
 <h1 class="text-3xl font-bold underline">Val - Full Stack SvelteKit Todo App</h1>
 ```
-
-Done.
 
 ### 2.
 
