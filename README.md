@@ -140,6 +140,8 @@ export const todos = writable([]);
 
 Create the addTodo function.
 
+`src/stores/todoStore.js`
+
 ```js
 export const addTodo = (text) => {
 	//
@@ -154,4 +156,28 @@ export const addTodo = (text) => {
 		return newTodos;
 	});
 };
+```
+
+### 5.
+
+Add Todo to store.
+
+`lib/TodoForm.svelte`
+
+```js
+<script>
+	// import addTodo from stores
+	import { addTodo } from '../stores/todoStore.js';
+
+	let todo = '';
+
+	const handleSubmit = (event) => {
+		addTodo(todo);
+		console.log(todo);
+		console.log(event);
+		console.log('submitting');
+		// reset Todo input
+		todo = '';
+	};
+</script>
 ```
