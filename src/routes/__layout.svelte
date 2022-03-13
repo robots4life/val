@@ -9,5 +9,6 @@
 <style lang="postcss">
 	:global(body) {
 		@apply bg-sky-900;
+		@apply font-sans;
 	}
 </style>
