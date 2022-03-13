@@ -202,5 +202,7 @@ Show Todos imported from store on Index page.
 <TodoForm />
 
 <!-- here are the Todos from the store -->
+<!-- NOTE THE $ IN FRONT OF THE todos!! -->
+<!-- this will enable us to access the writeable store that is reactive and hence updates its values on defined events -->
 {JSON.stringify($todos)}
 ```
