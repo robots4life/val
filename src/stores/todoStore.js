@@ -17,19 +17,3 @@ export const addTodo = (text) => {
 		return newTodos;
 	});
 };
-
-// Delete Todo
-export const deleteTodo = (id) => {
-	//
-	todos.update((currentValue) => {
-		//
-		// filter the todos store
-		const newTodos = currentValue.filter((element) => {
-			//
-			// return all the todos that do NOT have the passed in id
-			return element.id != id;
-		});
-		console.log(newTodos);
-		return newTodos;
-	});
-};

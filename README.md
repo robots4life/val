@@ -181,3 +181,26 @@ Add Todo to store.
 	};
 </script>
 ```
+
+### 6.
+
+Show Todos imported from store on Index page.
+
+`routes/index.svelte`
+
+```html
+<script>
+	import TodoForm from '$lib/TodoForm.svelte';
+
+	// import the Todos from the store
+	import { todos } from '../stores/todoStore.js';
+</script>
+
+<h1>Val - Full Stack SvelteKit Todo App</h1>
+<h2>Todos</h2>
+
+<TodoForm />
+
+<!-- here are the Todos from the store -->
+{JSON.stringify($todos)}
+```

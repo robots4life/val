@@ -10,4 +10,5 @@
 <h2 class="text-3xl font-bold text-center text-sky-400 py-4">Todos</h2>
 
 <TodoForm />
+
 {JSON.stringify($todos)}
