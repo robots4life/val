@@ -206,3 +206,46 @@ Show Todos imported from store on Index page.
 <!-- this will enable us to access the writeable store that is reactive and hence updates its values on defined events -->
 {JSON.stringify($todos)}
 ```
+
+### 7.
+
+Show Todo with a Todo component.
+
+`src/lib/Todo.svelte`
+
+```html
+<script>
+	// Allow this component to accept values from the outside
+	export let todo;
+</script>
+
+<li>text: {todo.text} | index: {todo.id}</li>
+```
+
+</br>
+
+`src/routes/index.svelte`
+
+```js
+<script>
+	import TodoForm from '$lib/TodoForm.svelte';
+
+	// import the Todos from the store
+	import { todos } from '../stores/todoStore.js';
+</script>
+
+<h1>Val - Full Stack SvelteKit Todo App</h1>
+<h2>Todos</h2>
+
+<TodoForm />
+
+{JSON.stringify($todos)}
+
+{#each $todos as todo}
+
+	// Feed the Todo component's exported property "todo"
+	// with the values from the imported writeable Todos store
+	<Todo todo="{todo}" />
+
+{/each}
+```
