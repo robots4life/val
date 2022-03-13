@@ -1,5 +1,6 @@
 <script>
 	import TodoForm from '$lib/TodoForm.svelte';
+	import Todo from '$lib/Todo.svelte';
 
 	import { todos } from '../stores/todoStore.js';
 </script>
@@ -12,3 +13,7 @@
 <TodoForm />
 
 {JSON.stringify($todos)}
+
+{#each $todos as todo}
+	<Todo todo="{todo}" />
+{/each}

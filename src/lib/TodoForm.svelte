@@ -1,7 +1,6 @@
 <script>
 	// import addTodo from stores
 	import { addTodo } from '../stores/todoStore.js';
-	import { deleteTodo } from '../stores/todoStore.js';
 
 	let todo = '';
 
@@ -26,7 +25,7 @@
 			bind:value="{todo}"
 		/>
 	</div>
-	<button type="submit" class="text-white rounded bg-blue-500 hover:bg-blue-600 py-4 px-6 my-6"
+	<button type="submit" class="text-white rounded bg-blue-500 hover:bg-blue-600 px-6 py-4 my-6"
 		>Submit</button
 	>
 </form>
