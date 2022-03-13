@@ -6,8 +6,11 @@
 
 	const handleSubmit = (event) => {
 		addTodo(todo);
+		console.log(todo);
 		console.log(event);
 		console.log('submitting');
+		// reset Todo input
+		todo = '';
 	};
 </script>
 

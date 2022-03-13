@@ -12,6 +12,7 @@ export const addTodo = (text) => {
 		const newTodos = [...currentValue, { text, completed: false, id: Date.now() }];
 
 		// return the newly created array
+		console.log(newTodos);
 		return newTodos;
 	});
 };
