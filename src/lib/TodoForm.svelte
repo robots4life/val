@@ -1,7 +1,11 @@
 <script>
+	// import addTodo from stores
+	import { addTodo } from '../stores/todoStore.js';
+
 	let todo = '';
 
 	const handleSubmit = (event) => {
+		addTodo(todo);
 		console.log(event);
 		console.log('submitting');
 	};
