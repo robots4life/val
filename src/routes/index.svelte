@@ -3,11 +3,6 @@
 	import Todo from '$lib/Todo.svelte';
 
 	import { todos } from '../stores/todoStore.js';
-
-	const todosA = [
-		{ text: 'A', completed: false, id: 1647250171092 },
-		{ text: 'B', completed: false, id: 1647250173461 }
-	];
 </script>
 
 <h1 class="text-4xl font-bold text-center text-sky-100 py-4">
@@ -17,12 +12,8 @@
 
 <TodoForm />
 
-{#each todosA as todo}
-	<Todo todo="{todo}" />
-{/each}
-
-<!-- {JSON.stringify($todos)}
+{JSON.stringify($todos)}
 
 {#each $todos as todo}
 	<Todo todo="{todo}" />
-{/each} -->
+{/each}
