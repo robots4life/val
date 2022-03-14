@@ -19,7 +19,7 @@ export const addTodo = (text) => {
 };
 
 // Delete Todo
-export function deleteTodo(id) {
+export const deleteTodo = (id) => {
 	console.log('deleteTodo(id) called');
 	console.log(id);
-}
+};
