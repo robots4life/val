@@ -267,3 +267,34 @@ Show Todo with a Todo component.
 **!!!**
 
 **https://svelte.dev/repl/91499094927146a8a0dfa4a949247216?version=3.46.4**
+
+### 9.
+
+Delete a single Todo.
+
+`src/stores/todoStore.js`
+
+```js
+// Delete Todo
+export const deleteTodo = (id) => {
+	console.log('deleteTodo(id) called');
+	console.log(id);
+
+	//
+	// filter todos based on the passed id
+	// so the items that remain in the todos array are the items that do not have the todo.id value that is passed in
+	//
+	todos.update((currentValue) => {
+		console.log(currentValue);
+
+		const newTodos = currentValue.filter((element) => {
+			//
+			// filter the todos and return the todos where the todo.id is NOT the passed in id
+			return element.id !== id;
+		});
+
+		console.log(newTodos);
+		return newTodos;
+	});
+};
+```
