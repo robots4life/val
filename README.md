@@ -249,3 +249,21 @@ Show Todo with a Todo component.
 
 {/each}
 ```
+
+### 8.
+
+**Make sure to understand the difference between**
+
+```js
+<button on:click="{deleteTodo(todo.id)}">delete Todo</button>
+```
+
+**and**
+
+```js
+<button on:click="{() => deleteTodo(todo.id)}">delete Todo</button>
+```
+
+**!!!**
+
+**https://svelte.dev/repl/91499094927146a8a0dfa4a949247216?version=3.46.4**
