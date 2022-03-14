@@ -17,3 +17,9 @@ export const addTodo = (text) => {
 		return newTodos;
 	});
 };
+
+// Delete Todo
+export function deleteTodo(id) {
+	console.log('deleteTodo(id) called');
+	console.log(id);
+}
