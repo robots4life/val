@@ -80,6 +80,7 @@ export const toggleTodoCompleted = (id, completed) => {
 	// 	return todoCompleted;
 	// });
 
+	// https://github.com/jamesqquick/svelte-kit-supabase-todo-app-with-tailwind/blob/76d1fd9a25e7a0bafb8a1d9272fcd1a6242b5a69/src/stores/todoStore.js#L18
 	todos.update((todos) => {
 		let index = -1;
 		for (let i = 0; i < todos.length; i++) {
