@@ -82,14 +82,22 @@ export const toggleTodoCompleted = (id, completed) => {
 
 	// https://github.com/jamesqquick/svelte-kit-supabase-todo-app-with-tailwind/blob/76d1fd9a25e7a0bafb8a1d9272fcd1a6242b5a69/src/stores/todoStore.js#L18
 	todos.update((todos) => {
+		//
+		// create index so we can later get the correct todo by that index
 		let index = -1;
+		//
+		// iterate over the todos until the todo with the passed in id is found
 		for (let i = 0; i < todos.length; i++) {
 			if (todos[i].id === id) {
 				index = i;
 				break;
 			}
 		}
+		//
+		// check for the found index and make sure it is not negative
 		if (index !== -1) {
+			//
+			// last not least, set the todo.completed value to the opposite of its current value
 			todos[index].completed = !todos[index].completed;
 		}
 		return todos;
