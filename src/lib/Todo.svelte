@@ -15,7 +15,7 @@
 		class="mr-2 form-checkbox h-5 w-5"
 	/>
 
-	text: {todo.text} | index: {todo.id} | completed: {todo.completed}
+	text: {todo.text} | id: {todo.id} | completed: {todo.completed}
 
 	<!--
 	Check out below REPL to understand why we have to use an arrow function syntax
