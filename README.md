@@ -102,7 +102,7 @@ export const supabase = createClient(supabaseURL, supabaseAnonKey);
 In `supabase.js` there are two environment variables being used, `VITE_PUBLIC_SUPABASE_URL` and `VITE_PUBLIC_SUPABASE_ANON_KEY`.
 The values for these environment variables are created inside the Supabase app.
 
-<img src="src/images/Screenshot_20220316_134300-Supabse-URL-and-Anon-Key.png">
+<img src="src/images/Screenshot_20220316_134300-supabse-url-and-anon-Key.png">
 
 </br>
 </br>
@@ -196,3 +196,26 @@ SupabaseClient {
   }
 }
 ```
+
+### 4.
+
+Model the data inside the database.
+
+Create a `todos` table with the following rows.
+
+| Name         | Type         | Default Value |
+| ------------ | ------------ | ------------- |
+| `created_at` | `timestampz` | `NOW()`       |
+| `text`       | `text`       | `NULL`        |
+| `completed`  | `bool`       | `NULL`        |
+| `user_id`    | `uuid`       | `NULL`        |
+
+</br>
+</br>
+
+It looks like this in the Supabase editor.
+
+<img  src="src/images/Screenshot_20220316_150803-create-a-new-table.png">
+
+</br>
+</br>
