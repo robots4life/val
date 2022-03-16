@@ -14,17 +14,25 @@ https://www.youtube.com/watch?v=YqIyET7XKIQ
 </br>
 </br>
 
-**2022-03-10 `npm ls`**
+**2022-03-16 `npm ls`**
 
 ```shell
 val@0.0.1 /shared/httpd/val
 ├── @sveltejs/adapter-auto@1.0.0-next.31
 ├── @sveltejs/kit@1.0.0-next.295
+├── autoprefixer@10.4.2
 ├── env-cmd@10.1.0
 ├── eslint-config-prettier@8.5.0
 ├── eslint-plugin-svelte3@3.4.1
 ├── eslint@7.32.0
+├── postcss@8.4.8
 ├── prettier-plugin-svelte@2.6.0
 ├── prettier@2.5.1
-└── svelte@3.46.4
+├── svelte@3.46.4
+└── tailwindcss@3.0.23
 ```
+
+</br>
+</br>
+
+## supabase
