@@ -76,10 +76,11 @@ export const deleteTodo = async (id) => {
 
 // Toggle Todo Completed
 export const toggleTodoCompleted = async (id, currentState) => {
+	console.log(id);
 	//
 	// update Todo completed state
 	const { error } = await supabase
-		.from('todo')
+		.from('todos')
 		.update({ completed: !currentState })
 		.match({ id });
 
