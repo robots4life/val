@@ -41,12 +41,12 @@ val@0.0.1 /shared/httpd/val
 
 Setup Supabase and model the data inside the database.
 
-a)
+a)  
 We need `text` as a `string` for the Todo.
 
-b)
+b)  
 We need the `completed` state as a `boolean` for the Todo.
 
-c)
+c)  
 We need a User ID for the user that created the Todo.
 As we progress we will later add this part in the database.
