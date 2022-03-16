@@ -59,6 +59,7 @@ export const toggleTodoCompleted = (id, completed) => {
 		}
 		//
 		// check for the found index and make sure it is not negative
+		// not negative since that would mean no object with the passed id was found
 		if (index !== -1) {
 			//
 			// last not least, set the todo.completed value to the opposite of its current value
