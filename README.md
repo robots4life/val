@@ -122,6 +122,8 @@ https://kit.svelte.dev/faq#how-do-i-use-environment-variables
 
 To check if the Supabase client is working we can do a simple log.
 
+`src/routes/__layout.svelte`
+
 ```html
 <script>
 	import '../app.css';
