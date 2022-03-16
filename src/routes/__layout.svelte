@@ -1,5 +1,9 @@
 <script>
 	import '../app.css';
+
+	import { supabase } from '$lib/supabase.js';
+
+	console.log(supabase);
 </script>
 
 <main class="container py-4 my-4">
