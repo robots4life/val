@@ -16,12 +16,15 @@ export const loadTodos = async () => {
 
 	todos.set(data);
 };
+loadTodos();
 
 // Add Todo
 export const addTodo = async (text, user_id) => {
 	//
 	// add Todo to Supabase
-	const { data, error } = await supabase.from('todos').insert([{ text, user_id }]);
+	const { data, error } = await supabase
+		.from('todos')
+		.insert([{ text, completed: false, user_id }]);
 	if (error) return console.log(error);
 
 	//
