@@ -6,11 +6,15 @@ There are two branches.
 
 https://www.youtube.com/watch?v=YipaPr4Aex8
 
+Reference: https://github.com/jamesqquick/svelte-kit-supabase-todo-app-with-tailwind/tree/todos-no-supabase
+
 **<a href="https://github.com/robots4life/val/tree/supabase">`supabase`</a>** is the second part of the app where everything runs on Supabase including User Authentication via Magic Link.
 
 Both apps are styled with Tailwind CSS.
 
 https://www.youtube.com/watch?v=YqIyET7XKIQ
+
+Reference: https://github.com/jamesqquick/svelte-kit-supabase-todo-app-with-tailwind/tree/add-supabase
 </br>
 </br>
 
