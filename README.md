@@ -251,11 +251,11 @@ Add Todo to Supabase.
 //
 // Add Todo
 export const addTodo = async (text, user_id) => {
-  //
+        //
 	// add Todo to Supabase
 	const { data, error } = await supabase
-  .from('todos')
-  .insert([{ text, user_id }]);
+            .from('todos')
+            .insert([{ text, user_id }]);
 
 	if (error) return console.log(error);
 
@@ -272,9 +272,9 @@ export const deleteTodo = async (id) => {
 	//
 	// delete Todo from Supabase
 	const { error } = await supabase
-  .from('todo')
-  .delete()
-  .match({ id });
+            .from('todo')
+            .delete()
+            .match({ id });
 
 	if (error) return console.log(error);
 
@@ -291,9 +291,9 @@ export const toggleTodoCompleted = async (id, currentState) => {
 	//
 	// update Todo completed state
 	const { error } = await supabase
-		.from('todo')
-		.update({ completed: !currentState })
-		.match({ id });
+            .from('todo')
+            .update({ completed: !currentState })
+            .match({ id });
 
 	if (error) return console.log(error);
 
