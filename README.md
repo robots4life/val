@@ -94,6 +94,9 @@ const supabaseURL = import.meta.env.VITE_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseURL, supabaseAnonKey);
+
+// create a default export to supabase is available without importing it
+export default supabase;
 ```
 
 </br>
@@ -219,3 +222,100 @@ It looks like this in the Supabase editor.
 
 </br>
 </br>
+
+### 5.
+
+Load Todos from Supabase
+
+`src/stores/todoStore.js`
+
+```js
+//
+// Load Todos from Supabase
+export const loadTodos = async () => {
+	const { data, error } = await supabase.from('todos').select();
+
+	if (error) return console.log(error);
+
+	todos.set(data);
+};
+```
+
+### 6.
+
+Add Todo to Supabase.
+
+`src/stores/todoStore.js`
+
+```js
+//
+// Add Todo
+export const addTodo = async (text, user_id) => {
+  //
+	// add Todo to Supabase
+	const { data, error } = await supabase
+  .from('todos')
+  .insert([{ text, user_id }]);
+
+	if (error) return console.log(error);
+
+  ...
+```
+
+### 7.
+
+Delete Todo from Supabase.
+
+```js
+// Delete Todo
+export const deleteTodo = async (id) => {
+	//
+	// delete Todo from Supabase
+	const { error } = await supabase
+  .from('todo')
+  .delete()
+  .match({ id });
+
+	if (error) return console.log(error);
+
+  ...
+```
+
+### 8.
+
+Update Todo completed state.
+
+```js
+// Toggle Todo Completed
+export const toggleTodoCompleted = async (id, currentState) => {
+	//
+	// update Todo completed state
+	const { error } = await supabase
+		.from('todo')
+		.update({ completed: !currentState })
+		.match({ id });
+
+	if (error) return console.log(error);
+
+  ...
+```
+
+### 9.
+
+Buy Ice Cream
+
+<img src="src/images/Screenshot_20220316_171008-buy-ice-cream-first-supabase-todo-created-oh-yeah.png">
+
+</br>
+</br>
+
+<img src="src/images/Screenshot_20220316_171312-buy-ice-cream-first-supabase-todo-created-oh-yeah-supabase-editor.png">
+
+</br>
+</br>
+
+First ever Todo created on Supabase with SvelteKit on **`2022-03-16T16:09:23.352012+00:00`**.
+
+Super happy, oh yeah. :)
+
+:sparkles::sparkles::sparkles::sparkles::sparkles:

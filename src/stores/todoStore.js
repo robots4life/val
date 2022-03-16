@@ -1,16 +1,40 @@
+import supabase from '$lib/supabase';
 import { writable } from 'svelte/store';
+
+//
+// add Supabase to our Todo App ==> Tada :))
+// import { supabase } from '$lib/supabase.js';
 
 export const todos = writable([]); // create an empty array of todos in the store that can be written to
 
+//
+// Load Todos from Supabase
+export const loadTodos = async () => {
+	const { data, error } = await supabase.from('todos').select();
+
+	if (error) return console.log(error);
+
+	todos.set(data);
+};
+
 // Add Todo
-export const addTodo = (text) => {
+export const addTodo = async (text, user_id) => {
+	//
+	// add Todo to Supabase
+	const { data, error } = await supabase.from('todos').insert([{ text, user_id }]);
+	if (error) return console.log(error);
+
 	//
 	// update the todos store with the update method
 	todos.update((currentValue) => {
 		//
 		// update the array and re-assign it to todos
 		// spread out the currentValue and add in the new value
-		const newTodos = [...currentValue, { text, completed: false, id: Date.now() }];
+		// const newTodos = [...currentValue, { text, completed: false, id: Date.now() }];
+
+		//
+		// add new Todo to Supabase
+		const newTodos = [...currentValue, data[0]];
 
 		// return the newly created array
 		console.log(newTodos);
@@ -19,9 +43,15 @@ export const addTodo = (text) => {
 };
 
 // Delete Todo
-export const deleteTodo = (id) => {
+export const deleteTodo = async (id) => {
 	console.log('deleteTodo(id) called');
 	console.log(id);
+
+	//
+	// delete Todo from Supabase
+	const { error } = await supabase.from('todo').delete().match({ id });
+
+	if (error) return console.log(error);
 
 	//
 	// filter todos based on the passed id
@@ -42,7 +72,16 @@ export const deleteTodo = (id) => {
 };
 
 // Toggle Todo Completed
-export const toggleTodoCompleted = (id, completed) => {
+export const toggleTodoCompleted = async (id, currentState) => {
+	//
+	// update Todo completed state
+	const { error } = await supabase
+		.from('todo')
+		.update({ completed: !currentState })
+		.match({ id });
+
+	if (error) return console.log(error);
+
 	//
 	// https://github.com/jamesqquick/svelte-kit-supabase-todo-app-with-tailwind/blob/76d1fd9a25e7a0bafb8a1d9272fcd1a6242b5a69/src/stores/todoStore.js#L18
 	todos.update((todos) => {
