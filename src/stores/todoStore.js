@@ -52,7 +52,7 @@ export const deleteTodo = async (id) => {
 
 	//
 	// delete Todo from Supabase
-	const { error } = await supabase.from('todo').delete().match({ id });
+	const { error } = await supabase.from('todos').delete().match({ id });
 
 	if (error) return console.log(error);
 
