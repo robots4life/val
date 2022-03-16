@@ -35,7 +35,7 @@ val@0.0.1 /shared/httpd/val
 </br>
 </br>
 
-## local
+## supabase
 
 ### 1.
 
