@@ -48,7 +48,7 @@
 	<!-- while the loading state is true the submit button is disabled so that no subsequent login request can be sent to the server -->
 	<button
 		type="submit"
-		class="text-white rounded bg-blue-500 hover:bg-blue-600 px-6 py-4 my-6"
+		class="text-white rounded bg-blue-500 hover:bg-blue-600 px-6 py-4 my-6 disabled:bg-red-500"
 		disabled="{loading}"
 	>
 		Log In

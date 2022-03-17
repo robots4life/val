@@ -572,3 +572,34 @@ If the user is not signed up and signed in we show the Auth component, otherwise
 	{/if}
 </main>
 ```
+
+### 14.
+
+Add a way for the user to log out.
+
+Create a Navbar component that will have a log out button.
+
+`src/lib/Navbar.svelte`
+
+```html
+<script>
+	import supabase from '$lib/supabase';
+
+	// log out
+	const logOut = () => {
+		console.log('log out');
+		supabase.auth.signOut();
+	};
+</script>
+
+<div class="my-4 flex justify-end">
+	<button
+		class="text-white rounded bg-blue-500 hover:bg-blue-600 px-6 py-4 my-6"
+		on:click="{logOut}"
+	>
+		Log out
+	</button>
+</div>
+```
+
+The `user` property in the `authStore` is populated, or better `set` with the user data returned from Supabase upon successful login via Magic Link. This is all done in Layout since this is the parent component of all other components of the app. We can now track the user authentication state across the entire app.

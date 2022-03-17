@@ -9,6 +9,8 @@
 
 	import { loadTodos } from '../stores/todoStore';
 
+	import Navbar from '$lib/Navbar.svelte';
+
 	//
 	// let's find out what we get back from Supabase
 	console.log(supabase.auth.user());
@@ -40,6 +42,7 @@
 		then we show the slot
 	 -->
 	{#if $user}
+		<Navbar />
 		<slot />
 		<!--
 			otherwise we just show the Auth component so that the use can sign up and /or sign in
