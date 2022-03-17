@@ -1,9 +1,10 @@
 <script>
 	import '../app.css';
+	import Auth from '$lib/Auth.svelte';
 </script>
 
 <main class="container py-4 my-4">
-	<slot />
+	<Auth /><slot />
 </main>
 
 <style lang="postcss">

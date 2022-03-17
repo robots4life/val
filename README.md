@@ -102,7 +102,8 @@ const supabaseAnonKey = import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY;
 
 export const supabase = createClient(supabaseURL, supabaseAnonKey);
 
-// create a default export to supabase is available without importing it
+// https://stackoverflow.com/a/21117231
+// create a default export so supabase is available without curly braces
 export default supabase;
 ```
 
@@ -326,3 +327,68 @@ First ever Todo created on Supabase with SvelteKit on **`2022-03-16T16:09:23.352
 Super happy, oh yeah. :)
 
 :sparkles::sparkles::sparkles::sparkles::sparkles:
+
+### 10.
+
+Create an Auth component for Supabase Authentication with SvelteKit.
+
+`src/lib/Auth.svelte`
+
+```html
+<script>
+	import supabase from '$lib/supabase';
+
+	let loading = false;
+	let email;
+
+	const handleLogin = async () => {
+		try {
+			// the loading state starts here
+			loading = true;
+
+			console.log(email);
+
+			// hello ? could this be any easier ?
+			const { error } = await supabase.auth.signIn({ email });
+
+			// if there is something wrong with either the email or the request
+			if (error) throw error;
+
+			// on success display an alert to the user to check their email inbox
+			alert('Check your email for the login link!');
+		} catch (error) {
+			console.error(error);
+
+			alert(error.error_description || error.message);
+		} finally {
+			// the loading state is finally finished here
+			loading = false;
+		}
+	};
+</script>
+
+<h1>Log in</h1>
+<p>Sign in via magic link with your email below</p>
+
+<!-- https://svelte.dev/tutorial/event-modifiers preventDefault on the submit event -->
+<form on:submit|preventDefault="{handleLogin}">
+	<div>
+		<label for="login"> Email </label>
+		<input type="email" name="email" bind:value="{email}" placeholder="Your email" />
+	</div>
+	<button type="submit" disabled="{loading}">Log In</button>
+</form>
+```
+
+Load the Auth component in the Layout.
+
+`src/routes/__layout.svelte`
+
+```html
+<script>
+	import '../app.css';
+	import Auth from '$lib/Auth.svelte';
+</script>
+
+<main class="container py-4 my-4"><Auth /><slot /></main>
+```
