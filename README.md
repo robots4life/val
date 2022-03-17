@@ -380,6 +380,9 @@ Create an Auth component for Supabase Authentication with SvelteKit.
 </form>
 ```
 
+</br>
+</br>
+
 Load the Auth component in the Layout.
 
 `src/routes/__layout.svelte`
@@ -392,3 +395,13 @@ Load the Auth component in the Layout.
 
 <main class="container py-4 my-4"><Auth /><slot /></main>
 ```
+
+</br>
+</br>
+
+Now if we use any odd email address from e.g. https://10minutemail.com/ we get the following email from Supabase.
+
+The authentication link in the email is something like this.
+`https://example.supabase.co/auth/v1/verify?token=someTokenHere&type=signup&redirect_to=http://localhost:3000/`
+
+<img src="src/images/Screenshot_20220317_113517-confirm-user-and-get-auth-link.png">
