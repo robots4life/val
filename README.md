@@ -405,3 +405,21 @@ The authentication link in the email is something like this.
 `https://example.supabase.co/auth/v1/verify?token=someTokenHere&type=signup&redirect_to=http://localhost:3000/`
 
 <img src="src/images/Screenshot_20220317_113517-confirm-user-and-get-auth-link.png">
+
+### 11.
+
+Detect the state change for the user in the app.
+
+Once we submit an email and receive the authentication link and are redirected back to the app the **change of state for the now authenticated user** has to be **reflected in the app**.
+
+Create an auth store.
+
+`src/stores/authStore.js`
+
+```js
+// we are going to keep track of the user's authentication state in this store
+
+import { writable } from 'svelte/store';
+
+export const user = writable(false);
+```
