@@ -2,4 +2,7 @@
 
 import { writable } from 'svelte/store';
 
-export const user = writable(false);
+// an empty writeable means the value is "undefined"
+export const user = writable();
+
+export default user;

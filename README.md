@@ -399,9 +399,9 @@ Load the Auth component in the Layout.
 </br>
 </br>
 
-Now if we use any odd email address from e.g. https://10minutemail.com/ we get the following email from Supabase.
+Now if we use any odd email address from e.g. https://10minutemail.com/ and put that in the email field of the form and send the request we get the following email message back from Supabase.
 
-The authentication link in the email is something like this.
+The authentication link to **confirm the sign up to the app** in the email message is something like this.
 `https://example.supabase.co/auth/v1/verify?token=someTokenHere&type=signup&redirect_to=http://localhost:3000/`
 
 <img src="src/images/Screenshot_20220317_113517-confirm-user-and-get-auth-link.png">
@@ -421,13 +421,135 @@ Create an auth store.
 
 import { writable } from 'svelte/store';
 
-export const user = writable(false);
+// an empty writeable means the value is "undefined"
+export const user = writable();
+
+export default user;
 ```
 
 ### 12.
 
-Supabase gives us Hooks to decide whether or not the authentication state has changed for the user.
+Supabase gives us **Hooks** to decide whether or not the authentication state has changed for the user.
 
 To be able to track this authentication state across multiple pages we can use the `src/routes/__layout.svelte` **Layout** file.
 
 This is the parent component that loads before all the other components that are in the `<slot />`.
+
+</br>
+</br>
+
+Get the Supabase user with
+
+```js
+supabase.auth.user();
+```
+
+and then use that to set the `user` property from the writeable store to the Supabase User.
+
+```html
+<script>
+	import '../app.css';
+
+	import supabase from '$lib/supabase';
+
+	import Auth from '$lib/Auth.svelte';
+
+	import user from '../stores/authStore';
+
+	//
+	// update the "user" property from the imported writeable store with the logged in user inside of Supabase
+	user.set(supabase.auth.user());
+</script>
+```
+
+</br>
+</br>
+
+Further we use
+
+```js
+supabase.auth.onAuthStateChange();
+```
+
+to detect state changes of the authenticated user.
+
+**https://supabase.com/docs/reference/javascript/auth-onauthstatechange**
+
+```js
+//
+//  what happens when the user logs in or out ?
+supabase.auth.onAuthStateChange((_, session) => {
+	//
+	// if there is a session then set that to the user property from the authStore
+	//
+	// the ?. notaion is optional chaning
+	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+	user.set(session?.user);
+
+	//
+	// if there is a session associated with the user then we load the Todos
+	if (session?.user) loadTodos();
+});
+```
+
+</br>
+</br>
+
+Above we used any odd email address from e.g. https://10minutemail.com/ and got an email message back from Supabase to confirm the **sign up** to the app for that email address.
+
+Now, again, if we use a new random email address from e.g. https://10minutemail.com/ we get the "Confirm Your Signup" message back, click the authentication link to sign up to the app in that and by doing so store that email address in the Supabase database as a verified email address that can be used to **sign in** to the app.
+
+</br>
+</br>
+
+So now we use the same random email address again, put it into the email field of the sign in form and send the request.
+
+Now we will get a different email message back from Supabase containing the **Magic Link** that we can use to **sign in** to the app.
+_Of course we can also use our own email address, for the purpose of this demo and training using a throwaway email address is totally fine._
+
+The authentication link or the so called **Magic Link** that is used to **sign in to the app** in the email message is something like this.
+`https://example.supabase.co/auth/v1/verify?token=someTokenHere&type=magiclink&redirect_to=http://localhost:3000/`
+
+<img src="src/images/Screenshot_20220317_144625-confirm-user-sign-up-and-then-get-magic-sign-in-link.png">
+
+</br>
+</br>
+
+Last not least, logging `console.log(supabase.auth.user());` shows us the **logged in user**.
+
+```js
+{
+    "id": "abc-some-id",
+    "aud": "authenticated",
+    "role": "authenticated",
+    "email": "qcslsgpzscefemdcwq@bvhrs.com",
+    "email_confirmed_at": "2022-03-17",
+    "phone": "",
+    "confirmation_sent_at": "2022-03-17",
+    "confirmed_at": "2022-03-17",
+    "recovery_sent_at": "2022-03-17",
+    "last_sign_in_at": "2022-03-17",
+    "app_metadata": {
+        "provider": "email",
+        "providers": [
+            "email"
+        ]
+    },
+    "user_metadata": {},
+    "identities": [
+        {
+            "id": "abc-some-id",
+            "user_id": "abc-some-id",
+            "identity_data": {
+                "sub": "abc-some-id"
+            },
+            "provider": "email",
+            "last_sign_in_at": "2022-03-17",
+            "created_at": "2022-03-17",
+            "updated_at": "2022-03-17"
+        }
+    ],
+    "created_at": "2022-03-17,
+    "updated_at": "2022-03-17"
+}
+```

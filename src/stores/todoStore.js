@@ -1,9 +1,8 @@
-import supabase from '$lib/supabase';
 import { writable } from 'svelte/store';
 
 //
 // add Supabase to our Todo App ==> Tada :))
-// import { supabase } from '$lib/supabase.js';
+import supabase from '$lib/supabase';
 
 export const todos = writable([]); // create an empty array of todos in the store that can be written to
 
