@@ -423,3 +423,11 @@ import { writable } from 'svelte/store';
 
 export const user = writable(false);
 ```
+
+### 12.
+
+Supabase gives us Hooks to decide whether or not the authentication state has changed for the user.
+
+To be able to track this authentication state across multiple pages we can use the `src/routes/__layout.svelte` **Layout** file.
+
+This is the parent component that loads before all the other components that are in the `<slot />`.
