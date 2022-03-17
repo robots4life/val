@@ -562,15 +562,11 @@ If the user is not signed up and signed in we show the Auth component, otherwise
 
 ```js
 <main>
-	<!--
-		if we have a user that we check for WITH A DOLLAR SIGN since this is a reactive value from the authStore
-		then we show the slot
+	<!-- if we have a user that we check for WITH A DOLLAR SIGN since this is a reactive value from the authStore	then we show the slot
 	 -->
 	{#if $user}
 	<slot />
-	<!--
-			otherwise we just show the Auth component so that the use can sign up and /or sign in
-	  	-->
+	<!-- otherwise we just show the Auth component so that the use can sign up and /or sign in -->
 	{:else}
 	<Auth />
 	{/if}
