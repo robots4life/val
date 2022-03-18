@@ -603,3 +603,13 @@ Create a Navbar component that will have a log out button.
 ```
 
 The `user` property in the `authStore` is populated, or better `set` with the user data returned from Supabase upon successful login via Magic Link. This is all done in Layout since this is the parent component of all other components of the app. We can now track the user authentication state across the entire app.
+
+### 14.
+
+Manage Todos per logged in User.
+
+Implement **Authorization** using **Row Level Security** with Supabase.
+
+To understand how Supabase solves this we are going to look at **Row Level Security**.
+
+https://www.youtube.com/watch?v=Ow_Uzedfohk
