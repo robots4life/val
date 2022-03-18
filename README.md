@@ -606,7 +606,7 @@ The `user` property in the `authStore` is populated, or better `set` with the us
 
 ### 15.
 
-Manage Todos per logged in User.
+Manage Todos per Logged In User.
 
 Implement **Authorization** using **Row Level Security** with Supabase.
 
