@@ -606,10 +606,61 @@ The `user` property in the `authStore` is populated, or better `set` with the us
 
 ### 15.
 
-Manage Todos per Logged In User.
+Manage Todos per Logged In User in Supabase.
 
 Implement **Authorization** using **Row Level Security** with Supabase.
 
 To understand how Supabase solves this we are going to look at **Row Level Security**.
 
 https://www.youtube.com/watch?v=Ow_Uzedfohk
+
+</br>
+</br>
+
+Enable RLS on Todos table.
+
+<img src="src/images/Screenshot_20220320_130722-enable-rls-on-todos-table.png">
+
+<img src="src/images/Screenshot_20220320_131000-enable-rls-on-todos-table-02.png">
+
+</br>
+</br>
+
+By default RLS gives no access to anything from anyone. We have to **create a new policy** that will **enable access** to the Todos of each **logged in User**.
+
+<img  src="src/images/Screenshot_20220320_131349-create-new-rls-policy.png">
+
+</br>
+</br>
+
+We are going to create a new policy from a template and use the **Enable delete access for users based on their user ID** template in this case.
+
+<img src="src/images/Screenshot_20220320_131848-use-a-template-for-rls.png">
+
+</br>
+</br>
+
+For the policy we are going to allow **ALL**, so
+
+**SELECT** a Todo,  
+**INSERT** a Todo,  
+**UPDATE** a Todo and  
+**DELETE** a Todo.
+
+To check that the Todo belongs to the logged in user we set the User ID returned form `auth.uid()` **equal to** the `user_id` in the Todos table. This is done in both, the **USING expression** and **WITH CHECK expression** fields.
+
+<img  src="src/images/Screenshot_20220320_132200-enable-all-access-to-users-auth.uid-equals-user_id.png">
+
+</br>
+</br>
+
+Last not least we **review** the policy and save it.
+
+<img src="src/images/Screenshot_20220320_133031-review-rls-policy-enable-all-access-to-logged-in-user.png">
+
+</br>
+</br>
+
+The new **RLS policy** now appears in the editor for the **todos** table.
+
+<img src="src/images/Screenshot_20220320_133217-rls-policly-for-todos-table.png">
