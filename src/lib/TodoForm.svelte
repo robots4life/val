@@ -2,13 +2,27 @@
 	// import addTodo from stores
 	import { addTodo } from '../stores/todoStore.js';
 
+	//
+	// import the user from the Auth store
+	//
+	// the User ID is set in src/routes/__layout.svelte and stored in the auth store
+	import user from '../stores/authStore';
+
+	console.log($user.id);
+
 	let todo = '';
 
 	const handleSubmit = (event) => {
-		addTodo(todo);
+		//
+		// pass in the user id from the auth store when creating a new Todo
+		//
+		// make sure to use a DOLLAR SIGN to access the reactive store value for the User ID
+		addTodo(todo, $user.id);
+
 		console.log(todo);
 		console.log(event);
 		console.log('submitting');
+
 		// reset Todo input
 		todo = '';
 	};

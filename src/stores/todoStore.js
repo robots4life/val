@@ -18,12 +18,22 @@ export const loadTodos = async () => {
 loadTodos();
 
 // Add Todo
+//
+// pass the user_id with the new Todo
 export const addTodo = async (text, user_id) => {
 	//
 	// add Todo to Supabase
+	//
+	// this return two values, data and error
 	const { data, error } = await supabase
 		.from('todos')
-		.insert([{ text, completed: false, user_id }]);
+		//
+		// here we also insert the user_id with the new Todo
+		//
+		// the property on the table is called user_id and the value that is passed in
+		// in available in the variable user_id
+		.insert([{ text, completed: false, user_id: user_id }]);
+
 	if (error) return console.log(error);
 
 	//
@@ -36,6 +46,8 @@ export const addTodo = async (text, user_id) => {
 
 		//
 		// add new Todo to Supabase
+		//
+		// down here we use the returned data value to add it at the end of the Todo store array
 		const newTodos = [...currentValue, data[0]];
 
 		// return the newly created array

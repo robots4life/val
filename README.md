@@ -664,3 +664,91 @@ Last not least we **review** the policy and save it.
 The new **RLS policy** now appears in the editor for the **todos** table.
 
 <img src="src/images/Screenshot_20220320_133217-rls-policly-for-todos-table.png">
+
+### 16.
+
+Now when creating a new Todo we have to set the User ID `user_id` on the Todo to be able to associate it with the logged in user.
+
+`src/stores/todoStore.js`
+
+```js
+// Add Todo
+//
+// pass the user_id with the new Todo
+export const addTodo = async (text, user_id) => {
+	//
+	// add Todo to Supabase
+	//
+	// this return two values, data and error
+	const { data, error } = await supabase
+		.from('todos')
+		//
+		// the property on the table is called user_id and the value that is passed in
+		// in available in the variable user_id
+		.insert([{ text, completed: false, user_id: user_id }]);
+
+	if (error) return console.log(error);
+
+	//
+	// update the todos store with the update method
+	todos.update((currentValue) => {
+		//
+		// update the array and re-assign it to todos
+		// spread out the currentValue and add in the new value
+		// const newTodos = [...currentValue, { text, completed: false, id: Date.now() }];
+
+		//
+		// add new Todo to Supabase
+		//
+		// down here we use the returned data value to add it at the end of the Todo store array
+		const newTodos = [...currentValue, data[0]];
+
+		// return the newly created array
+		console.log(newTodos);
+		return newTodos;
+	});
+};
+```
+
+</br>
+</br>
+
+Also in the Todo form we need to pass in the User ID when creating a new Todo.
+
+`src/lib/TodoForm.svelte`
+
+```js
+//
+// import the user from the Auth store
+//
+// the User ID is set in src/routes/__layout.svelte
+// and stored in the auth store
+import user from '../stores/authStore';
+
+console.log($user.id);
+
+let todo = '';
+
+const handleSubmit = (event) => {
+	//
+	// pass in the user id from the auth store when creating a new Todo
+	//
+	// make sure to use a DOLLAR SIGN to access the reactive store value for the User ID
+	addTodo(todo, $user.id);
+
+	console.log(todo);
+	console.log(event);
+	console.log('submitting');
+
+	// reset Todo input
+	todo = '';
+};
+```
+
+### 17.
+
+We are done. Newly created Todos have a User ID set in the `user_id` row. Todos can now be added, toggled completed and deleted per logged in user.
+
+<img src="src/images/Screenshot_20220320_140045-user-id-is-set-for-each-todo.png">
+
+:sparkles::sparkles:
