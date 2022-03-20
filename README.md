@@ -751,4 +751,6 @@ We are done. Newly created Todos have a User ID set in the `user_id` row. Todos 
 
 <img src="src/images/Screenshot_20220320_140045-user-id-is-set-for-each-todo.png">
 
+<img src="src/images/Screenshot_20220320_141340-done.png">
+
 :sparkles::sparkles:
