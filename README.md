@@ -754,3 +754,13 @@ We are done. Newly created Todos have a User ID set in the `user_id` row. Todos 
 <img src="src/images/Screenshot_20220320_141340-done.png">
 
 :sparkles::sparkles:
+
+### 18.
+
+Deploy to Vercel.
+
+In Vercel, add the `VITE_PUBLIC_SUPABASE_URL` and `VITE_PUBLIC_SUPABASE_ANON_KEY` environment variables to the project.
+
+**https://val-todo.vercel.app/**
+
+<img src="src/images/Screenshot_20220321_164350-deploy-to-vercel.png">
