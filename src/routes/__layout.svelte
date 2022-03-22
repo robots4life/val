@@ -45,7 +45,7 @@
 		<Navbar />
 		<slot />
 		<!--
-			otherwise we just show the Auth component so that the use can sign up and /or sign in
+			otherwise we just show the Auth component so that the user can sign up and /or sign in
 	  	-->
 	{:else}
 		<Auth />
