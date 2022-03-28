@@ -6,13 +6,13 @@
 	export let todo;
 </script>
 
-<li class="text-2xl list-none bg-sky-200 rounded-lg px-6 py-8 my-6">
+<li class="">
 	<input
 		name="completed"
 		type="checkbox"
 		checked="{todo.completed}"
 		on:change="{() => toggleTodoCompleted(todo.id, todo.completed)}"
-		class="mr-2 form-checkbox h-5 w-5"
+		class=""
 	/>
 
 	text: {todo.text} | index: {todo.id} | completed: {todo.completed}
