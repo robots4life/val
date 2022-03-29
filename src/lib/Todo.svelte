@@ -15,7 +15,7 @@
 		class=""
 	/>
 
-	text: {todo.text} | index: {todo.id} | completed: {todo.completed}
+	<p>text: {todo.text} | index: {todo.id} | completed: {todo.completed}</p>
 
 	<!--
 	Check out below REPL to understand why we have to use an arrow function syntax

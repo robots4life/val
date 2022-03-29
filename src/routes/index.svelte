@@ -5,9 +5,9 @@
 	import { todos } from '../stores/todoStore.js';
 </script>
 
-<h1 class="">Val - Full Stack SvelteKit Todo App</h1>
-<h2 class="">Todos</h2>
+<h1>Todo</h1>
 
+<hr />
 <TodoForm />
 
 {JSON.stringify($todos)}

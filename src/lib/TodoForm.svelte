@@ -17,7 +17,7 @@
 <form class="" on:submit|preventDefault="{handleSubmit}">
 	<div class="flex flex-col">
 		<label for="todo"></label>
-		<input class="" type="text" name="todo" placeholder="Buy Ice Cream" bind:value="{todo}" />
+		<input type="text" name="todo" placeholder="Buy Ice Cream" bind:value="{todo}" />
 	</div>
 	<button type="submit" class="">Submit</button>
 </form>
